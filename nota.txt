@@ -1,0 +1,55 @@
+==================================DEVELOPMENT MODE===================================================
+
+Importante en caso de estar en Windows para agregar las variable se utiliza "set" 
+en el caso de linux se usa "export"
+
+crear variable de entorno para correr el proyecto
+
+export ENV_FILE_LOCATION=./.env
+export FLASK_APP=app.py
+export FLASK_ENV=development
+export FLASK_DEBUG=1
+
+==================================PRODUCTION MODE====================================================
+
+para Probar los errores personalizados se necesita desactivar el debug mode
+
+export ENV_FILE_LOCATION=./.env
+export FLASK_APP=app.py
+export FLASK_ENV=production
+export FLASK_DEBUG=0
+
+echo ENV_FILE_LOCATION FLASK_APP FLASK_ENV FLASK_DEBUG
+
+====================================EMAIL============================================================
+
+para recibir los mail de manera local 
+
+abrir una terminal nueva en el env del proyacto y ejecutar la siguiente linea
+
+python -m smtpd -n -c DebuggingServer localhost:1025
+
+====================================TESTS============================================================
+
+1) para test se tiene que exportar el .env.test y se usa la siguiente configuracion
+2) tener en cuenta que no exista el correo para pruebas en la base de datos
+
+export ENV_FILE_LOCATION=./.env.test
+export FLASK_APP=app.py
+export FLASK_ENV=development
+export FLASK_DEBUG=1
+
+linea para ejecurtar los test de manera individual
+
+python -m unittest tests/test_signup.py
+
+linea para ejecurtar todos los test
+
+python -m unittest --buffer
+
+======================================Virtual env================================================================
+
+# si tiene una marquina Virtual en mi caso "vagrant" este es el comando para crear el entorno y no de error
+
+virtualenv -p /usr/bin/python3.9 env --always-copy 
+
