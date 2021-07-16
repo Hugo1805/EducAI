@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+#files
+tests/
+Recursos/
+nota.txt
 # C extensions
 *.so
 
@@ -103,6 +107,7 @@ celerybeat.pid
 
 # Environments
 .env
+.env.test
 .venv
 env/
 venv/
