@@ -1,5 +1,6 @@
 from flask import request, Response
 from flask_restful import Resource
+import json
 
 from database.models import Maestro
 from services.lower_json_service import data_lower
@@ -30,7 +31,16 @@ def listMaestros(codigo_maestro):
     try:
         print('codigo_maestro: ', codigo_maestro)
         maestro = Maestro.objects().get(codigo_maestro=codigo_maestro).to_json()
-        return Response(maestro, mimetype="application/json", status=200)
+        print('maestro DB: ',maestro)
+        maestro_response = json.loads(maestro)
+        print(maestro_response) 
+        maestro_json_response = {
+                'codigo_maestro': maestro_response['codigo_maestro'],
+                'email': maestro_response['email'],
+                'nombre': maestro_response['nombre'] +' '+ maestro_response['apellido'],
+                'especialidad' : maestro_response['especialidad']
+            },201
+        return maestro_json_response
     except FieldDoesNotExist:
         raise SchemaValidationError
     except NotUniqueError:

@@ -40,9 +40,7 @@ def listUsers(codigo_alumno):
                 'ciclo' : user_response['ciclo'],
                 'carrera': user_response['carrera']
             },201
-        print(user_json_response)
         return user_json_response
-        return Response(user_json_response, mimetype="application/json")
     except FieldDoesNotExist:
         raise SchemaValidationError
     except NotUniqueError:
