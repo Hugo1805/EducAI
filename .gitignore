@@ -6,6 +6,7 @@ __pycache__/
 #files
 tests/
 Recursos/
+nota.txt
 # C extensions
 *.so
 
